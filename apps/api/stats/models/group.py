@@ -9,7 +9,9 @@ class Group(models.Model):
     Группа
     """
 
-    name = models.CharField(_("Наименование группы"), max_length=250)
+    name = models.CharField(
+        _("Наименование группы"), max_length=250, unique=True
+    )
 
     faculty = models.ForeignKey(
         Faculty, verbose_name=_("Факультет"), on_delete=models.CASCADE
@@ -18,6 +20,10 @@ class Group(models.Model):
     class Meta:
         verbose_name = _("Группа")
         verbose_name_plural = _("Группы")
+        unique_together = [
+            "name",
+            "faculty",
+        ]
 
     def __str__(self):
         return self.name
