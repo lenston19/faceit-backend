@@ -23,7 +23,6 @@ class GroupAdmin(ModelAdmin, BaseAdminMixin):
 @register(CSGOStats)
 class CSGOStatsAdmin(ModelAdmin, BaseAdminMixin):
     list_display = (
-        "name",
         "player_id",
         "elo",
         "kd_ratio",

@@ -2,16 +2,20 @@ from django.core.validators import MaxValueValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from .player import Player
+
 
 class CSGOStats(models.Model):
     """
     Статистика CS:GO
     """
 
-    name = models.CharField(_("Наименование игры"), max_length=50)
-
-    player_id = models.CharField(
-        _("Уникальное значение игрока"), max_length=255
+    player = models.OneToOneField(
+        Player,
+        verbose_name=_("Игрок"),
+        on_delete=models.CASCADE,
+        related_name="csgo_stats",
+        null=True,
     )
 
     elo = models.PositiveSmallIntegerField(_("ELO"), blank=True)
@@ -21,11 +25,13 @@ class CSGOStats(models.Model):
     average_kd_ratio = models.FloatField(_("Average K/D Ratio"), blank=True)
 
     average_hs = models.PositiveSmallIntegerField(
-        _("Average Headshots %"), validators=[MaxValueValidator(100)]
+        _("Average Headshots %"),
+        validators=[MaxValueValidator(100)],
+        blank=True,
     )
 
     win_rate = models.PositiveSmallIntegerField(
-        _("Win Rate %"), validators=[MaxValueValidator(100)]
+        _("Win Rate %"), validators=[MaxValueValidator(100)], blank=True
     )
 
     class Meta:

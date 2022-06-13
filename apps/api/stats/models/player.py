@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from .csgo_stats import CSGOStats
 from .group import Group
 
 
@@ -18,9 +17,11 @@ class Player(models.Model):
 
     nickname = models.CharField(_("Никнейм"), max_length=150)
 
-    stats = models.ForeignKey(CSGOStats, verbose_name=_("Статистика игрока"), on_delete=models.CASCADE)
-
-    group = models.ForeignKey(Group, verbose_name=_("Учебная группа"), on_delete=models.CASCADE)
+    group = models.ForeignKey(
+        Group,
+        verbose_name=_("Учебная группа"),
+        on_delete=models.CASCADE,
+    )
 
     class Meta:
         verbose_name = _("Игрок")

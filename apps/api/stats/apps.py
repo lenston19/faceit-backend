@@ -7,3 +7,6 @@ class StatsConfig(AppConfig):
 
     name = "apps.api.stats"
     verbose_name = _("Статистика")
+
+    def ready(self):
+        from . import signals  # noqa: F401 # pylint: disable=unused-import
