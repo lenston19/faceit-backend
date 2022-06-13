@@ -18,6 +18,8 @@ DEFAULT_APPS = [
     "drf_yasg",
     "django_cleanup.apps.CleanupConfig",
     "service_objects",
+    "crispy_forms",
+    "django_filters",
 ]
 
 PROJECT_APPS = [
