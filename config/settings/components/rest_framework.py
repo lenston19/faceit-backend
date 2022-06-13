@@ -30,7 +30,7 @@ REST_FRAMEWORK = {
     "DATETIME_FORMAT": "%d/%m/%Y %H:%M",
 }
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
 
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = "access_token"
