@@ -60,6 +60,7 @@ pip = "^22.1"
 PyPDF2 = "^1.27.12"
 pdfid = "^1.1.0"
 striprtf = "^0.0.20"
+whitenoise = "^6.2.0"
 
 
 [tool.poetry.dev-dependencies]
