@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from ..models import CSGOStats, Faculty, Group, Player
+from ..models import CSGOStats, DOTA2Stats, Faculty, Group, Player
+
+
+class DOTA2StatsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DOTA2Stats
+        fields = "__all__"
 
 
 class CSGOStatsSerializer(serializers.ModelSerializer):
@@ -25,6 +31,7 @@ class GroupSerializer(serializers.ModelSerializer):
 
 class PlayerSerializer(serializers.ModelSerializer):
     csgo_stats = CSGOStatsSerializer()
+    dota2_stats = DOTA2StatsSerializer()
     group = GroupSerializer()
 
     class Meta:

@@ -2,10 +2,10 @@ import requests
 
 
 class FaceitAPI:
-    def __init__(self, pname) -> None:
+    def __init__(self, pname, game_id) -> None:
         self.pname = pname
         self._player_id = None
-        self.game_id = "csgo"
+        self.game_id = game_id
         self.api_header = {
             "Authorization": "Bearer 882ab0ea-ff0c-4f70-99f1-215836754927",
             "content-type": "application/json",
@@ -15,7 +15,7 @@ class FaceitAPI:
     def player_id(self):
         try:
             player_id_request = requests.get(
-                f"https://open.faceit.com/data/v4/players?nickname={self.pname}&game=CSGO",
+                f"https://open.faceit.com/data/v4/players?nickname={self.pname}&game={self.game_id}",
                 headers=self.api_header,
             )
             player_id_data = player_id_request.json()
