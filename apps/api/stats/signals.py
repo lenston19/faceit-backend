@@ -1,8 +1,19 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 from .models import CSGOStats, DOTA2Stats, Player
 from .utils import FaceitAPI
+
+
+@receiver(pre_save, sender=Player)
+def fetch_faceit_id(sender, instance: Player, **kwargs):
+    try:
+        faceit_instance = FaceitAPI(instance.nickname, "csgo")
+        instance.faceit_id = faceit_instance.player_id
+        faceit_instance = FaceitAPI(instance.nickname, "dota2")
+        instance.faceit_id = faceit_instance.player_id
+    except:
+        pass
 
 
 @receiver(post_save, sender=Player)

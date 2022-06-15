@@ -7,7 +7,12 @@ from .models import CSGOStats, DOTA2Stats, Faculty, Group, Player
 
 @register(Player)
 class PlayerAdmin(ModelAdmin, BaseAdminMixin):
-    list_display = ("first_name", "last_name", "patronymic")
+    list_display = (
+        "first_name",
+        "last_name",
+        "patronymic",
+        "group",
+    )
 
 
 @register(Faculty)

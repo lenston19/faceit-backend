@@ -23,6 +23,13 @@ class Player(models.Model):
         on_delete=models.CASCADE,
     )
 
+    faceit_id = models.CharField(
+        _("Faceit ID"),
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+
     class Meta:
         verbose_name = _("Игрок")
         verbose_name_plural = _("Игроки")
